@@ -32,6 +32,7 @@ def get_players(inputName=None, inputSurname=None, gameweek=None):
 
 
 def add_registration(fields):
+    print(f"`add_registration`: {fields}")
     conn = create_connection(player_db)
     sql = "INSERT INTO players VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,datetime('now'))"
     cur = conn.cursor()
