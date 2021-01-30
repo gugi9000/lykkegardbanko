@@ -37,10 +37,12 @@ def register():
     name, surname, gameweek = None, None, None
     if request.method == 'POST':
         fields = dict(request.form.items())
+        values = list(fields.values())
         if not all([x for x in fields.values()]):
             errors.append('Alle felter skal udfyldes!')
+        elif not all([x.isnumeric() for x in values[2:-1]]):
+            errors.append('Alle tal skal være heltal..')
 
-        values = list(fields.values())
         # for k, v in fields.items():
         #     print(f"{k}: {v}")
         tal = set(values[2:17])
@@ -59,7 +61,7 @@ def register():
             if len(previous) == 0:
                 database.add_registration(values)
                 return redirect(url_for('show_players'))
-        errors.append('En plade for valgte uge og navne findes allerede!!')
+            errors.append('En plade for valgte uge og navne findes allerede!!')
     else:
         numbers = list(range(1, 91))
         row1 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
