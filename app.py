@@ -1,12 +1,21 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from random import choice
-import sqlite3
+import database
 
 
 app = Flask(__name__)
 app.secret_key = b"dette er en hemmelig streng"
 app.url_map.strict_slashes = False
 WTF_CSRF_SECRET_KEY = "a random string"
+
+
+@app.template_filter()
+def week_filter(gameweek):
+    week = gameweek.replace('uge', '')
+    return int(week)
+
+
+app.jinja_env.filters['gameweek'] = week_filter
 
 
 @app.route('/')
@@ -32,13 +41,11 @@ def register():
             errors.append('Alle felter skal udfyldes!')
 
         values = list(fields.values())
-        for k, v in fields.items():
-            print(f"{k}: {v}")
+        # for k, v in fields.items():
+        #     print(f"{k}: {v}")
         tal = set(values[2:17])
-        print(tal)
         if len(tal) != 15:
             errors.append('Der skal være 15 forskellige tal!')
-
         row1 = [(i, num) for i, num in enumerate(values[2:7])]
         row2 = [(i, num) for i, num in enumerate(values[7:12])]
         row3 = [(i, num) for i, num in enumerate(values[12:17])]
@@ -47,6 +54,12 @@ def register():
         name = fields.get('inputName', None)
         surname = fields.get('inputSurname', None)
         gameweek = fields.get('gameweek', None)
+        if len(errors) == 0:
+            previous = database.get_players(inputName=name, inputSurname=surname, gameweek=gameweek)
+            if len(previous) == 0:
+                database.add_registration(values)
+                return redirect(url_for('show_players'))
+        errors.append('En plade for valgte uge og navne findes allerede!!')
     else:
         numbers = list(range(1, 91))
         row1 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
@@ -59,11 +72,7 @@ def register():
 @app.route('/tilmeldte')
 def show_players():
     page = 'players'
-    numbers = list(range(1, 91))
-    rows = list()
-    for x in range(15):
-        rows.append(numbers.pop(choice(range(len(numbers)))))
-    players = [['Bjarke', 'Sørensen', sorted(rows)]]
+    players = database.get_players()
     return render_template('players.html', page=page, title='Tilmeldte', players=players)
 
 

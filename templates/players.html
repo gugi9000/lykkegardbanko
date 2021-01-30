@@ -5,14 +5,27 @@
     <p>Der er endnu ingen deltagere.. :'(</p>
     <p>Du kan blive den første !! <a href="/registrering">Meld dig til nu.</a> </p>
     {% else %}
-        {% for name, sur, numbers in players %}
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">{{ name }} {{ sur }}</div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for name, sur, inputRow1_0, inputRow1_1, inputRow1_2, inputRow1_3, inputRow1_4, inputRow2_0, inputRow2_1, inputRow2_2, inputRow2_3, inputRow2_4, inputRow3_0, inputRow3_1, inputRow3_2, inputRow3_3, inputRow3_4, gameweek, created in players %}
+            <div class="col">
+             <div class="card">
             <div class="card-body text-dark">
-                <!-- h5 class="card-title">Dark card title</h5 -->
-                <p class="card-text">{{ numbers }}</p>
+            <div class="card-title">{{ name }} {{ sur }}</div>
+                <h5 class="card-title">Spilleuge {{ gameweek|week_filter }}</h5>
+                <table class="table">
+                    <tbody>
+                    <tr><td>{{ inputRow1_0 }}</td><td>{{ inputRow1_1 }}</td><td>{{ inputRow1_2 }}</td><td>{{ inputRow1_3 }}</td><td>{{ inputRow1_4 }}</td></tr>
+                    <tr><td>{{ inputRow2_0 }}</td><td>{{ inputRow2_1 }}</td><td>{{ inputRow2_2 }}</td><td>{{ inputRow2_3 }}</td><td>{{ inputRow2_4 }}</td></tr>
+                    <tr><td>{{ inputRow3_0 }}</td><td>{{ inputRow3_1 }}</td><td>{{ inputRow3_2 }}</td><td>{{ inputRow3_3 }}</td><td>{{ inputRow3_4 }}</td></tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <small class="text-muted">Registreret {{ created }}</small>
+                </div>
             </div>
-        </div>
+            </div>
+            </div>
         {%  endfor %}
+        </div>
     {%  endif %}
 {%  endblock %}
