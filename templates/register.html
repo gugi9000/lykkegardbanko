@@ -1,0 +1,32 @@
+{%  extends 'base.html' %}
+{%  block content %}
+<h1>Registrering</h1>
+    <p>Udfyld formularen herunder for at være med. Vi skal bruge dit navn og alle de 15 tal du har valgt.</p>
+    <p><strong>NB!</strong> Det skal gøres inden spilstart 8. februar kl. 08:00.</p>
+    {%  if rows %}
+    <form class="row g-3" method="POST" action="/registrering">
+  <div class="col-md-6">
+    <label for="inputName" class="form-label">Fornavn</label>
+    <input type="text" class="form-control" id="inputName">
+  </div>
+  <div class="col-md-6">
+    <label for="inputSurname" class="form-label">Efternavn(e)</label>
+    <input type="text" class="form-control" id="inputSurnames">
+  </div>
+<p>Jeg har valgt nogle tal for dig, men du må meget gerne vælge dine egne.</p>
+        {%  for row in rows.items() %}
+            {% for number in row[1] %}
+    <div class="col-md-2">
+      <label for="inputRow{{ row[0] }}-{{ number[0] }}" class="form-label">&nbsp;</label>
+      <input type="text" class="form-control" id="inputRow{{ row[0] }}-{{ number[0] }}" value="{{ number[1] }}">
+  </div>
+            {% endfor %}
+            <div class="col-md-2"></div>
+        {% endfor %}
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Registrer plade</button>
+  </div>
+</form>
+    {%  endif %}
+{%  endblock %}
