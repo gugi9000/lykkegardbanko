@@ -1,7 +1,12 @@
 {%  extends 'base.html' %}
 {%  block content %}
         <h1>Reglerne</h1>
-    <p>Læs reglerne :-)</p>
+    <p>Bankospillet består af tallene 1-90. Alle spillere skal have en spilleplade med i alt 15 tal på.</p>
+    <p>Du kan enten lave din egen plade eller gå ind på <a href="https://bankopladerne.dk/random.html">bankopladerne.dk</a> og finde en vilkårlig plade. Din plade skal dog bestå af tre vandrette rækker med 5 tal på hver.</p>
+    <p>Hver uge vil der vil spillet tre spil på samme plade. Der spilles først om 1 række, så 2 rækker og til sidst pladen fuld.</p>
+    <p>Når der spilles 1 række, har du banko, når alle tallene på én af dine vandrette rækker er trukket. Så snart vi har fundet en vinder af 1 række, så går spillet videre til 2 rækker.</p>
+    <p>Når der spilles 2 rækker, har du banko, når alle tallene på to af dine vandrette rækker er trukket. Så snart vi har fundet en vinder af 2 rækker, så går spillet videre til pladen fuld.</p>
+    <p>Når der spilles pladen fuld, har du banko når alle tallene på dine tre vandrette rækker er trukket.</p>
     <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -11,34 +16,48 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-          Først skal du finde på 3 x 5 forskellige tal. Du kan vælge fra 1 - 90.
-          Så skal du <a href="/registrering">registrere dig her</a> og fortælle hvilke tal du har valgt.
-          Hvis du ikke kan vælge kan du danne en plade på <a href="https://bankopladerne.dk/random.html">bankopladerne.dk</a><br>
-          <img src="/static/plade.png" alt="pladeeksempel">
+          Lykkegard banko kører over 3 uger. Uge 6, 7 & 8. Hvis man ønsker at deltage i et spil, så skal man <a href="/registrering">registrere sig her på siden</a> senest mandag kl. 12.00 i den uge man ønsker at deltage. Det er muligt at deltage i alle tre uger.
       </div>
     </div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Trækning af tal
+        Trækning af numre
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>Forklaring af hvordan trækning af tal foregår..</strong> - i vilde detaljer.
+          <p>Der vil dagligt blive trukket et vilkårligt antal numre, disse udgives på YouTube-kanalen <a href="https://www.youtube.com/channel/UCfdLxfkqBols1BOCpm_gB2Q">”Lykkegard Banko”</a>, samt linkes til via hjemmesiden (banko.wasd.dk) og på facebook-gruppen ”lykkegard personale”.</p>
+          <p>Der tilstræbes at trække numre så der hver uges findes 3 vindere.</p>
       </div>
     </div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Banko! Hvad når man vinder?
+        NÅR DU HAR BANKO!
       </button>
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>Når du har vundet</strong> skal du..
+          <p>Når du får banko, skal du så hurtigt som muligt sende en mail til <a href="mailto:banko@wasd.dk">banko@wasd.dk</a> eller skrive det inde på ”Lykkegard personale” gruppens facebookside. Du har 24 timer fra tallene er trukket til at gøre dette, hvis ikke vil du desværre miste din bankopræmie og derved give dine kollegaer mulighed at vinde en gave.</p>
+          <p>Trivselsudvalget vil herefter tjekke dine tal og give dig nærmere besked om din præmie.</p>
+          <p>Der kan være flere vindere på samme nummer, i dette tilfælde vil der enten gives præmier til alle vindere eller blive trukket lod – det kommer helt an på hvor mange gaver vi får tilsendt af de skønne sponsorer.</p>
+      </div>
+    </div>
+  </div>
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Sidegevinster
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>Der vil være sidegevinster til de kollegaer som alfabetisk er registreret før- og efter dit navn på planner4you. Der kan være situationer hvor trivselsudvalget træffer beslutning om at springe et personale over, hvis denne er langtidssygemeldt og ikke deltager eller lign. situationer. Der vil være en individuel vurdering. <strong>Det kan derfor være en fordel og tilskynde kollegaer til at deltage i spillet.</strong>
+Dette gælder uanset om man er ansat i skolen, aflastning eller opholdsregi. Det er registreringen af navnet på planner4you. I praksis betyder det at skolens personaler sidder ved siden af hinanden, da de har en særskilt registrering.
+</p>
       </div>
     </div>
   </div>
