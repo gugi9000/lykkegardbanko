@@ -1,32 +1,51 @@
 {%  extends 'base.html' %}
 {%  block content %}
 <h1>Registrering</h1>
-    <p>Udfyld formularen herunder for at være med. Vi skal bruge dit navn og alle de 15 tal du har valgt.</p>
-    <p><strong>NB!</strong> Det skal gøres inden spilstart 8. februar kl. 08:00.</p>
+    <p>Udfyld formularen herunder for at være med. Vi skal bruge dit navn, alle de 15 tal du har valgt samt hvilken uge din kupon skal gælde for.</p>
+    <p><strong>NB!</strong> Det skal gøres inden spilstart 8. februar kl. 12:00.</p>
+    {% if errors %}
+        {%  for error in errors %}
+        <div class="alert alert-warning" role="alert">
+            {{ error }}
+        </div>
+        {%  endfor %}
+    {% endif %}
     {%  if rows %}
-    <form class="row g-3" method="POST" action="/registrering">
-  <div class="col-md-6">
-    <label for="inputName" class="form-label">Fornavn</label>
-    <input type="text" class="form-control" id="inputName">
-  </div>
-  <div class="col-md-6">
-    <label for="inputSurname" class="form-label">Efternavn(e)</label>
-    <input type="text" class="form-control" id="inputSurnames">
-  </div>
-<p>Jeg har valgt nogle tal for dig, men du må meget gerne vælge dine egne.</p>
+    <form class="row g-3" method="POST" action="/registrering" >
+    <div class="col-md-6">
+        <label for="inputName" class="form-label">Fornavn</label>
+        <input type="text" class="form-control" id="inputName" name="inputName"{% if name %} value="{{ name }}"{% endif %}>
+    </div>
+    <div class="col-md-6">
+        <label for="inputSurname" class="form-label">Efternavn(e)</label>
+        <input type="text" class="form-control" id="inputSurnames" name="inputSurname"{% if surname %} value="{{ surname }}"{% endif %}>
+    </div>
+    <p>Jeg har valgt nogle tal for dig, men du må meget gerne vælge dine egne.</p>
         {%  for row in rows.items() %}
             {% for number in row[1] %}
     <div class="col-md-2">
       <label for="inputRow{{ row[0] }}-{{ number[0] }}" class="form-label">&nbsp;</label>
-      <input type="text" class="form-control" id="inputRow{{ row[0] }}-{{ number[0] }}" value="{{ number[1] }}">
+      <input type="text" class="form-control" name="inputRow{{ row[0] }}-{{ number[0] }}" id="inputRow{{ row[0] }}-{{ number[0] }}" value="{{ number[1] }}">
   </div>
             {% endfor %}
             <div class="col-md-2"></div>
         {% endfor %}
-
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Registrer plade</button>
-  </div>
+    <p>Og til sidst. Hvilken uge skal pladen gælde for?</p>
+    <div class="col-md-4">
+        <input class="form-check-input" type="radio" name="gameweek" id="inlineRadio2" value="uge6" {% if gameweek == 'uge6' %}checked{% endif %}>
+        <label class="form-check-label" for="inlineRadio2">Uge 6</label>
+    </div>
+    <div class="col-md-4">
+        <input class="form-check-input" type="radio" name="gameweek" id="inlineRadio3" value="uge7" {% if gameweek == 'uge7' %}checked{% endif %}>
+        <label class="form-check-label" for="inlineRadio3">Uge 7</label>
+    </div>
+    <div class="col-md-4">
+        <input class="form-check-input" type="radio" name="gameweek" id="inlineRadio1" value="uge8" {% if gameweek == 'uge8' %}checked{% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Uge 8</label>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Registrer plade</button>
+    </div>
 </form>
     {%  endif %}
 {%  endblock %}

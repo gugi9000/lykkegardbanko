@@ -23,16 +23,37 @@ def show_rules():
 
 @app.route('/registrering', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        return "Oops. We're not ready for that yet :-("
-
-    numbers = list(range(1, 91))
+    errors = list()
     page = 'register'
-    row1 = sorted([(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)])
-    row2 = sorted([(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)])
-    row3 = sorted([(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)])
+    name, surname, gameweek = None, None, None
+    if request.method == 'POST':
+        fields = dict(request.form.items())
+        if not all([x for x in fields.values()]):
+            errors.append('Alle felter skal udfyldes!')
+
+        values = list(fields.values())
+        for k, v in fields.items():
+            print(f"{k}: {v}")
+        tal = set(values[2:17])
+        print(tal)
+        if len(tal) != 15:
+            errors.append('Der skal være 15 forskellige tal!')
+
+        row1 = [(i, num) for i, num in enumerate(values[2:7])]
+        row2 = [(i, num) for i, num in enumerate(values[7:12])]
+        row3 = [(i, num) for i, num in enumerate(values[12:17])]
+        if not fields.get('gameweek', None):
+            errors.append('Vælg en uge at spille for!')
+        name = fields.get('inputName', None)
+        surname = fields.get('inputSurname', None)
+        gameweek = fields.get('gameweek', None)
+    else:
+        numbers = list(range(1, 91))
+        row1 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
+        row2 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
+        row3 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
     rows = {1: row1, 2: row2, 3: row3}
-    return render_template('register.html', page=page, title="Deltag!", rows=rows)
+    return render_template('register.html', page=page, title="Deltag!", rows=rows, name=name, gameweek=gameweek, surname=surname, errors=errors)
 
 
 @app.route('/tilmeldte')
