@@ -1,0 +1,18 @@
+{%  extends 'base.html' %}
+{%  block content %}
+<h1>Spillere</h1>
+    {%  if players|length < 1 %}
+    <p>Der er endnu ingen deltagere.. :'(</p>
+    <p>Du kan blive den første !! <a href="/registrering">Meld dig til nu.</a> </p>
+    {% else %}
+        {% for name, sur, numbers in players %}
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{ name }} {{ sur }}</div>
+            <div class="card-body text-dark">
+                <!-- h5 class="card-title">Dark card title</h5 -->
+                <p class="card-text">{{ numbers }}</p>
+            </div>
+        </div>
+        {%  endfor %}
+    {%  endif %}
+{%  endblock %}

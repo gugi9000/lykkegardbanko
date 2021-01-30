@@ -19,13 +19,24 @@ def show_rules():
 
 @app.route('/registrering', methods=['GET', 'POST'])
 def register():
-    numbers = list(range(1,91))
+    numbers = list(range(1, 91))
     page = 'register'
-    row1 = [(i, choice(numbers)) for i in range(5)]
-    row2 = [(i, choice(numbers)) for i in range(5)]
-    row3 = [(i, choice(numbers)) for i in range(5)]
+    row1 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
+    row2 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
+    row3 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
     rows = {1: sorted(row1), 2: sorted(row2), 3: sorted(row3)}
     return render_template('register.html', page=page, title="Deltag!", rows=rows)
+
+
+@app.route('/tilmeldte')
+def show_players():
+    page = 'players'
+    numbers = list(range(1, 91))
+    rows = list()
+    for x in range(15):
+        rows.append(numbers.pop(choice(range(len(numbers)))))
+    players = [['Bjarke', 'Sørensen', sorted(rows)]]
+    return render_template('players.html', page=page, title='Tilmeldte', players=players)
 
 
 @app.route('/vinder')
