@@ -1,8 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from random import choice
+import sqlite3
+
 
 app = Flask(__name__)
-
+app.secret_key = b"dette er en hemmelig streng"
+app.url_map.strict_slashes = False
+WTF_CSRF_SECRET_KEY = "a random string"
 
 
 @app.route('/')
@@ -19,12 +23,15 @@ def show_rules():
 
 @app.route('/registrering', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        return "Oops. We're not ready for that yet :-("
+
     numbers = list(range(1, 91))
     page = 'register'
-    row1 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
-    row2 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
-    row3 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
-    rows = {1: sorted(row1), 2: sorted(row2), 3: sorted(row3)}
+    row1 = sorted([(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)])
+    row2 = sorted([(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)])
+    row3 = sorted([(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)])
+    rows = {1: row1, 2: row2, 3: row3}
     return render_template('register.html', page=page, title="Deltag!", rows=rows)
 
 
