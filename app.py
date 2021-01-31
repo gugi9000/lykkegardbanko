@@ -59,7 +59,6 @@ def register():
         if len(errors) == 0:
             previous = database.get_players(inputName=name, inputSurname=surname, gameweek=gameweek)
             if len(previous) == 0:
-                print(f"`register`: {values}")
                 database.add_registration(values)
                 return redirect(url_for('show_players'))
             errors.append('En plade for valgte uge og navne findes allerede!!')
