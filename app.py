@@ -84,6 +84,12 @@ def banko():
     return render_template('banko.html', page=page, title="Banko!")
 
 
+@app.route('/prizes')
+def show_prizes():
+    page = 'prizes'
+    return render_template('prizes.html', page=page, title="Præmier")
+
+
 @app.route('/vindere')
 def show_winners():
     page = 'winners'
