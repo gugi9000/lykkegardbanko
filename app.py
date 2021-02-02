@@ -15,7 +15,16 @@ def week_filter(gameweek):
     return int(week)
 
 
+@app.template_filter()
+def drawn(number):
+    drawn_numbers = []
+    if number in drawn_numbers:
+        return f'<strong>{number}</strong>'
+    return number
+
+
 app.jinja_env.filters['gameweek'] = week_filter
+app.jinja_env.filters['drawn'] = drawn
 
 
 @app.route('/')

@@ -16,9 +16,9 @@
 {#                <h5 class="card-title">Spilleuge {{ gameweek|week_filter }}</h5>#}
                 <table class="table">
                     <tbody>
-                    <tr><td>{{ inputRow1_0 }}</td><td>{{ inputRow1_1 }}</td><td>{{ inputRow1_2 }}</td><td>{{ inputRow1_3 }}</td><td>{{ inputRow1_4 }}</td></tr>
-                    <tr><td>{{ inputRow2_0 }}</td><td>{{ inputRow2_1 }}</td><td>{{ inputRow2_2 }}</td><td>{{ inputRow2_3 }}</td><td>{{ inputRow2_4 }}</td></tr>
-                    <tr><td>{{ inputRow3_0 }}</td><td>{{ inputRow3_1 }}</td><td>{{ inputRow3_2 }}</td><td>{{ inputRow3_3 }}</td><td>{{ inputRow3_4 }}</td></tr>
+                    <tr><td>{{ inputRow1_0|drawn|safe }}</td><td>{{ inputRow1_1|drawn|safe }}</td><td>{{ inputRow1_2|drawn|safe }}</td><td>{{ inputRow1_3|drawn|safe }}</td><td>{{ inputRow1_4|drawn|safe }}</td></tr>
+                    <tr><td>{{ inputRow2_0|drawn|safe }}</td><td>{{ inputRow2_1|drawn|safe }}</td><td>{{ inputRow2_2|drawn|safe }}</td><td>{{ inputRow2_3|drawn|safe }}</td><td>{{ inputRow2_4|drawn|safe }}</td></tr>
+                    <tr><td>{{ inputRow3_0|drawn|safe }}</td><td>{{ inputRow3_1|drawn|safe }}</td><td>{{ inputRow3_2|drawn|safe }}</td><td>{{ inputRow3_3|drawn|safe }}</td><td>{{ inputRow3_4|drawn|safe }}</td></tr>
                     </tbody>
                 </table>
                 <div class="card-footer">
