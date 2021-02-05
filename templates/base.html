@@ -40,6 +40,9 @@
           <li class="nav-item">
           <a class="nav-link{%  if page == 'prizes' %} active{% endif %} }" href="/prizes">Præmier</a>
         </li>
+          <li class="nav-item">
+          <a class="nav-link{%  if page == 'videos' %} active{% endif %} }" href="/videos">Tidligere videoer</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -83,6 +86,11 @@
         <div class="carousel-caption d-none d-md-block">
         </div>
     </div>
+<div class="carousel-item" data-bs-interval="6000">
+      <img src="/static/massorskolen.png" class="d-block w-30 mx-auto" height="141" alt="Massørskolen-Fyn">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+    </div>
   </div>
   <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -93,6 +101,7 @@
     <span class="visually-hidden">Next</span>
   </a>
 </div>
+  <h1>&nbsp;</h1>
       {%  block content %}{% endblock %}
 
   </div>

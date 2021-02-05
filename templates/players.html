@@ -1,10 +1,18 @@
 {%  extends 'base.html' %}
 {%  block content %}
-<h1>Spillere</h1>
     {%  if players|length < 1 %}
     <p>Der er endnu ingen deltagere.. :'(</p>
     <p>Du kan blive den første !! <a href="/registrering">Meld dig til nu.</a> </p>
     {% else %}
+<h2>Alle trukkede tal</h2>
+        <table class="table table-striped">
+            <tr>
+                {%  for n in range(1,101) %}
+                    <td>{%  if n in drawn %}{{ n }}{% else %}&nbsp;{% endif %}</td>{% if n % 10 == 0 %}</tr><tr>{% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+        <h1>Bankoplader</h1>
         <h5>Uge 6</h5>
         <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for name, sur, inputRow1_0, inputRow1_1, inputRow1_2, inputRow1_3, inputRow1_4, inputRow2_0, inputRow2_1, inputRow2_2, inputRow2_3, inputRow2_4, inputRow3_0, inputRow3_1, inputRow3_2, inputRow3_3, inputRow3_4, gameweek, created in players %}
@@ -16,9 +24,9 @@
 {#                <h5 class="card-title">Spilleuge {{ gameweek|week_filter }}</h5>#}
                 <table class="table">
                     <tbody>
-                    <tr><td>{{ inputRow1_0|drawn|safe }}</td><td>{{ inputRow1_1|drawn|safe }}</td><td>{{ inputRow1_2|drawn|safe }}</td><td>{{ inputRow1_3|drawn|safe }}</td><td>{{ inputRow1_4|drawn|safe }}</td></tr>
-                    <tr><td>{{ inputRow2_0|drawn|safe }}</td><td>{{ inputRow2_1|drawn|safe }}</td><td>{{ inputRow2_2|drawn|safe }}</td><td>{{ inputRow2_3|drawn|safe }}</td><td>{{ inputRow2_4|drawn|safe }}</td></tr>
-                    <tr><td>{{ inputRow3_0|drawn|safe }}</td><td>{{ inputRow3_1|drawn|safe }}</td><td>{{ inputRow3_2|drawn|safe }}</td><td>{{ inputRow3_3|drawn|safe }}</td><td>{{ inputRow3_4|drawn|safe }}</td></tr>
+                    <tr><td{{ inputRow1_0|drawn|safe }}>{{ inputRow1_0 }}</td><td{{ inputRow1_1|drawn|safe }}>{{ inputRow1_1 }}</td><td{{ inputRow1_2|drawn|safe }}>{{ inputRow1_2 }}</td><td{{ inputRow1_3|drawn|safe }}>{{ inputRow1_3 }}</td><td{{ inputRow1_4|drawn|safe }}>{{ inputRow1_4 }}</td></tr>
+                    <tr><td{{ inputRow2_0|drawn|safe }}>{{ inputRow2_0 }}</td><td{{ inputRow2_1|drawn|safe }}>{{ inputRow2_1 }}</td><td{{ inputRow2_2|drawn|safe }}>{{ inputRow2_2 }}</td><td{{ inputRow2_3|drawn|safe }}>{{ inputRow2_3 }}</td><td{{ inputRow2_4|drawn|safe }}>{{ inputRow2_4 }}</td></tr>
+                    <tr><td{{ inputRow3_0|drawn|safe }}>{{ inputRow3_0 }}</td><td{{ inputRow3_1|drawn|safe }}>{{ inputRow3_1 }}</td><td{{ inputRow3_2|drawn|safe }}>{{ inputRow3_2 }}</td><td{{ inputRow3_3|drawn|safe }}>{{ inputRow3_3 }}</td><td{{ inputRow3_4|drawn|safe }}>{{ inputRow3_4 }}</td></tr>
                     </tbody>
                 </table>
                 <div class="card-footer">

@@ -8,6 +8,18 @@ app.secret_key = b"dette er en hemmelig streng"
 app.url_map.strict_slashes = False
 WTF_CSRF_SECRET_KEY = "a random string"
 
+draw_1 = [59, 66, 31, 28, 60, 19, 30, 46, 70, 41,
+          20, 33, 16, 76, 49, 54, 36, 23, 90, 1, ]
+draw_2 = [3, 56, 22, 52, 50, 64, 45, 13, 87, 18, ]
+draw_3 = [75, 34, 79, 84, 4, 43, 63, 42, 25, 72, ]  # Jeanett på 43 - en række
+draw_4 = [74, 80, 24, 55, 32, 12, 5, 53, 2, 61, ]  # Jeanett på 2 to rækker - Hvis 2 ikke er med vinder Minou
+draw_5 = [6, 57, 62, 40, 39, 77, 83, 85, 89, 81, ]
+draw_6 = [26, 86, 71, 44, 67, 73, 48, 58, 65, 7, ]
+draw_7 = [69, 88, 51, 27, 21, 47, 38, 82, 37, 10]  # Laura banko på 82 - fuld plade
+not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
+draw = draw_1 #+ draw_2 #+ draw_3 #+ draw_4 #+ draw_5 #+ draw_6 #+ draw_7
+latest_draw = draw_1
+
 
 @app.template_filter()
 def week_filter(gameweek):
@@ -17,10 +29,9 @@ def week_filter(gameweek):
 
 @app.template_filter()
 def drawn(number):
-    drawn_numbers = []
-    if number in drawn_numbers:
-        return f'<strong>{number}</strong>'
-    return number
+    if number in draw:
+        return f' class="table-success"'
+    return ''
 
 
 app.jinja_env.filters['gameweek'] = week_filter
@@ -30,13 +41,19 @@ app.jinja_env.filters['drawn'] = drawn
 @app.route('/')
 def front_page():
     page = 'index'
-    return render_template('index.html', page=page, title="Forside")
+    return render_template('index.html', page=page, title="Forside", drawn=latest_draw)
 
 
 @app.route('/regler')
 def show_rules():
     page = 'rules'
     return render_template('rules.html', page=page, title="Regler")
+
+
+@app.route('/videoer')
+def show_videos():
+    page = 'videoer'
+    return render_template('videos.html', page=page, title="Tidligere videoer")
 
 
 @app.route('/registrering', methods=['GET', 'POST'])
@@ -84,7 +101,7 @@ def register():
 def show_players():
     page = 'players'
     players = database.get_players()
-    return render_template('players.html', page=page, title='Tilmeldte', players=players)
+    return render_template('players.html', page=page, title='Tilmeldte', players=players, drawn=draw)
 
 
 @app.route('/vinder')

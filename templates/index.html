@@ -1,18 +1,22 @@
 {%  extends 'base.html' %}
 {%  block content %}
-    <h1>Er du tilmeldt?</h1>
+
+<h1>Dagens trækning</h1>
+    <hr>
+    <div align="center">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/cAiYThKKCS8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+        <h2>Dagens tal</h2>
+    <hr>
+        <table class="table table-striped">
+        <tr>
+            {%  for number in drawn %}<td>{{ number }}</td>{%  if loop.index % 10 == 0 %}</tr><tr>{% endif %}{%  endfor %}
+        </tr>
+        </table>
+    <p><a href="/tilmeldte">Find din plade</a> og se om der er gevinst!</p>
+    <hr>
+    <h2>Er du tilmeldt?</h2>
     <p>Husk at få dig <a href="/registrering">tilmeldt</a> inden vi starter!</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/cAiYThKKCS8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7Uor0A10kR8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <hr width="2">
-    <h1>Nye tal hver dag ca. kl. 12:00</h1>
-    <p>Du behøver ikke sidde klar på slaget - der er 24 timer at råbe banko i</p>
-    <p>Husk at få dig <a href="/registrering">tilmeldt</a> inden vi starter!</p>
-    <p>Du kan se de trukkede tal både her på siden og på facebook.</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/l7DcLBrrZI8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/bjRYDsbRbgk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <hr width="2">
-    <h1>Spillet starter 8. februar.</h1>
-    <p>Husk at få dig <a href="/registrering">tilmeldt</a> inden vi starter!</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/wpDGOwbi3p8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <p><a href="/videoer">Tidligere videoer..</a></p>
 {%  endblock %}
