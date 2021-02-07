@@ -1,5 +1,5 @@
 __*
 venv
 .idea
-db/*
 .DS_Store
+/db/
