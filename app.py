@@ -79,6 +79,8 @@ def register():
         row3 = [(i, num) for i, num in enumerate(values[12:17])]
         if not fields.get('gameweek', None):
             errors.append('Vælg en uge at spille for!')
+        if fields.get('gameweek', None) == 'uge6':
+            errors.append('Der kan ikke længere registreres plader for uge 6.')
         name = fields.get('inputName', None)
         surname = fields.get('inputSurname', None)
         gameweek = fields.get('gameweek', None)

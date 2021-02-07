@@ -2,7 +2,7 @@
 {%  block content %}
 <h1>Registrering</h1>
     <p>Udfyld formularen herunder for at være med. Vi skal bruge dit navn, alle de 15 tal du har valgt samt hvilken uge din kupon skal gælde for.</p>
-    <p><strong>NB!</strong> Det skal gøres inden spilstart 8. februar kl. 12:00.</p>
+    <p><strong>NB!</strong> Det skal gøres inden spilstart, mandag kl. 12:00 i spilleugen.</p>
     {% if errors %}
         {%  for error in errors %}
         <div class="alert alert-warning" role="alert">
@@ -32,8 +32,8 @@
         {% endfor %}
     <p>Og til sidst. Hvilken uge skal pladen gælde for?</p>
     <div class="col-md-4">
-        <input class="form-check-input" type="radio" name="gameweek" id="inlineRadio2" value="uge6" {% if gameweek == 'uge6' %}checked{% endif %}>
-        <label class="form-check-label" for="inlineRadio2">Uge 6</label>
+        <input class="form-check-input" type="radio" disabled name="gameweek" id="inlineRadio2" value="uge6" {% if gameweek == 'uge6' %}checked{% endif %}>
+        <label class="form-check-label" for="inlineRadio2" aria-disabled="true">Uge 6</label>
     </div>
     <div class="col-md-4">
         <input class="form-check-input" type="radio" name="gameweek" id="inlineRadio3" value="uge7" {% if gameweek == 'uge7' %}checked{% endif %}>
