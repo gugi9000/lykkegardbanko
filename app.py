@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from random import choice
+from random import choice, shuffle
 import database
 
 
@@ -19,6 +19,19 @@ draw_7 = [69, 88, 51, 27, 21, 47, 38, 82, 37, 10]  # Laura banko på 82 - fuld p
 not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
 draw = draw_1 #"+ draw_2 + draw_3 + draw_4 + draw_5 + draw_6 + draw_7
 latest_draw = draw_1
+
+sponsorer = [
+    ['danbolig.png', 'Danbolig'],
+    ['liljehoj.jpg','Liljehøj'],
+    ['lykkegard.png','Lykkegard'],
+    ['massorskolen.png','Massørskolen-Fyn'],
+    ['parasport.png','Parasport Danmark'],
+    ['revisorgaarden.png','RevisorGården'],
+    ['slagterknabstrup.png','Slageren i Knabstrup'],
+    ['sparekassen.png','Sparekassen Sjælland-Fyn'],
+    ['superbrugsenasnaes.png','Superbrugsen Asnæs'],
+    ]
+
 
 
 @app.template_filter()
@@ -41,19 +54,22 @@ app.jinja_env.filters['drawn'] = drawn
 @app.route('/')
 def front_page():
     page = 'index'
-    return render_template('index.html', page=page, title="Forside", drawn=latest_draw)
+    shuffle(sponsorer)
+    return render_template('index.html', page=page, title="Forside", drawn=latest_draw, sponsorer=sponsorer)
 
 
 @app.route('/regler')
 def show_rules():
     page = 'rules'
-    return render_template('rules.html', page=page, title="Regler")
+    shuffle(sponsorer)
+    return render_template('rules.html', page=page, title="Regler", sponsorer=sponsorer)
 
 
 @app.route('/videoer')
 def show_videos():
     page = 'videoer'
-    return render_template('videos.html', page=page, title="Tidligere videoer")
+    shuffle(sponsorer)
+    return render_template('videos.html', page=page, title="Tidligere videoer", sponsorer=sponsorer)
 
 
 @app.route('/registrering', methods=['GET', 'POST'])
@@ -96,32 +112,37 @@ def register():
         row2 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
         row3 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
     rows = {1: row1, 2: row2, 3: row3}
-    return render_template('register.html', page=page, title="Deltag!", rows=rows, name=name, gameweek=gameweek, surname=surname, errors=errors)
+    shuffle(sponsorer)
+    return render_template('register.html', page=page, title="Deltag!", rows=rows, name=name, gameweek=gameweek, surname=surname, errors=errors, sponsorer=sponsorer)
 
 
 @app.route('/tilmeldte')
 def show_players():
     page = 'players'
     players = database.get_players()
-    return render_template('players.html', page=page, title='Tilmeldte', players=players, drawn=draw)
+    shuffle(sponsorer)
+    return render_template('players.html', page=page, title='Tilmeldte', players=players, drawn=draw, sponsorer=sponsorer)
 
 
 @app.route('/vinder')
 def banko():
     page = 'banko'
-    return render_template('banko.html', page=page, title="Banko!")
+    shuffle(sponsorer)
+    return render_template('banko.html', page=page, title="Banko!", sponsorer=sponsorer)
 
 
 @app.route('/prizes')
 def show_prizes():
     page = 'prizes'
-    return render_template('prizes.html', page=page, title="Præmier")
+    shuffle(sponsorer)
+    return render_template('prizes.html', page=page, title="Præmier", sponsorer=sponsorer)
 
 
 @app.route('/vindere')
 def show_winners():
     page = 'winners'
-    return render_template('winners.html', page=page, title="Vindere")
+    shuffle(sponsorer)
+    return render_template('winners.html', page=page, title="Vindere", sponsorer=sponsorer)
 
 
 if __name__ == '__main__':

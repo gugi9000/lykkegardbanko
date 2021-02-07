@@ -51,51 +51,13 @@
       <p>Præmiesponsorer</p>
   <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="6000">
-      <img src="/static/lykkegard.png" class="d-block w-30 mx-auto" height="141" alt="Lykkegard">
+    {% for sponsor in sponsorer %}
+      <div class="carousel-item{% if loop.index == 1 %} active{% endif %}" data-bs-interval="3000">
+      <img src="/static/{{ sponsor[0] }}" class="d-block w-30 mx-auto" height="141" alt="{{ sponsor[1] }}">
          <div class="carousel-caption d-none d-md-block">
          </div>
     </div>
-    <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/revisorgaarden.png" class="d-block w-30 mx-auto" height="141" alt="Revisorgården">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/sparekassen.png" class="d-block w-30 mx-auto" height="141" alt="Sparekassen Sjælland-Fyn">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/danbolig.png" class="d-block w-30 mx-auto" height="141" alt="DanBolig">
-        <div class="carousel-caption d-none d-md-block">
-    </div>
-    </div>
-     <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/liljehoj.jpg" class="d-block w-30 mx-auto" height="141" alt="Liljehøj">
-        <div class="carousel-caption d-none d-md-block">
-    </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/parasport.png" class="d-block w-30 mx-auto" height="141" alt="Parasport">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/superbrugsenasnaes.png" class="d-block w-30 mx-auto" height="141" alt="Superbrugsen Asnæs">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/slagterknabstrup.png" class="d-block w-30 mx-auto" height="141" alt="Slagteren i Knabstrup">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-    </div>
-<div class="carousel-item" data-bs-interval="6000">
-      <img src="/static/massorskolen.png" class="d-block w-30 mx-auto" height="141" alt="Massørskolen-Fyn">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-    </div>
+       {% endfor  %}
   </div>
   <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
