@@ -21,12 +21,13 @@ draw = draw_1 #+ draw_2 + draw_3 + draw_4 + draw_5 + draw_6 + draw_7
 latest_draw = draw_1
 
 sponsorer = [
-    ['danbolig.png', 'Danbolig'],
+    ['FairIT.png', 'Fair IT A/S'],
+    ['danbolig.png', 'Danbolig Holbæk'],
     ['liljehoj.jpg','Liljehøj'],
     ['lykkegard.png','Lykkegard'],
     ['massorskolen.png','Massørskolen-Fyn'],
     ['parasport.png','Parasport Danmark'],
-    ['revisorgaarden.png','RevisorGården'],
+    ['revisorgaarden.png','RevisorGården Holbæk'],
     ['slagterknabstrup.png','Slageren i Knabstrup'],
     ['sparekassen.png','Sparekassen Sjælland-Fyn'],
     ['superbrugsenasnaes.png','Superbrugsen Asnæs'],
