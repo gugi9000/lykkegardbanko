@@ -24,14 +24,14 @@ latest_draw = draw_4
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
     ['danbolig.png', 'Danbolig Holbæk'],
-    ['liljehoj.jpg','Liljehøj'],
-    ['lykkegard.png','Lykkegard'],
-    ['massorskolen.png','Massørskolen-Fyn'],
-    ['parasport.png','Parasport Danmark'],
-    ['revisorgaarden.png','RevisorGården Holbæk'],
-    ['slagterknabstrup.png','Slageren i Knabstrup'],
-    ['sparekassen.png','Sparekassen Sjælland-Fyn'],
-    ['superbrugsenasnaes.png','Superbrugsen Asnæs'],
+    ['liljehoj.jpg', 'Liljehøj'],
+    ['lykkegard.png', 'Lykkegard'],
+    ['massorskolen.png', 'Massørskolen-Fyn'],
+    ['parasport.png', 'Parasport Danmark'],
+    ['revisorgaarden.png', 'RevisorGården Holbæk'],
+    ['slagterknabstrup.png', 'Slageren i Knabstrup'],
+    ['sparekassen.png', 'Sparekassen Sjælland-Fyn'],
+    ['superbrugsenasnaes.png', 'Superbrugsen Asnæs'],
     ]
 
 
