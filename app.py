@@ -20,6 +20,7 @@ not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele plade
 draw = draw_1 + draw_2 + draw_3 + draw_4 #+ draw_5 + draw_6 + draw_7
 latest_draw = draw_4
 
+
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
     ['danbolig.png', 'Danbolig Holbæk'],
@@ -32,7 +33,6 @@ sponsorer = [
     ['sparekassen.png','Sparekassen Sjælland-Fyn'],
     ['superbrugsenasnaes.png','Superbrugsen Asnæs'],
     ]
-
 
 
 @app.template_filter()
@@ -133,12 +133,6 @@ def banko():
 
 
 @app.route('/prizes')
-def show_prizes():
-    page = 'prizes'
-    shuffle(sponsorer)
-    return render_template('prizes.html', page=page, title="Præmier", sponsorer=sponsorer)
-
-
 @app.route('/vindere')
 def show_winners():
     page = 'winners'
