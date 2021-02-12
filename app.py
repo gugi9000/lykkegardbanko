@@ -17,8 +17,8 @@ draw_5 = [6, 57, 62, 40, 39, 77, 83, 85, 89, 81, ]
 draw_6 = [26, 86, 71, 44, 67, 73, 48, 58, 65, 7, ]
 draw_7 = [69, 88, 51, 27, 21, 47, 38, 82, 37, 10]  # Laura banko på 82 - fuld plade
 not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
-draw = draw_1 + draw_2 + draw_3 + draw_4 + draw_5 #+ draw_6 + draw_7
-latest_draw = draw_5
+draw = draw_1 + draw_2 + draw_3 + draw_4 + draw_5 + draw_6 #+ draw_7
+latest_draw = draw_6
 
 
 sponsorer = [
