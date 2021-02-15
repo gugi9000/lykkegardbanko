@@ -2,24 +2,23 @@ from flask import Flask, render_template, request, redirect, url_for
 from random import choice, shuffle
 import database
 
-
 app = Flask(__name__)
 app.secret_key = b"dette er en hemmelig streng"
 app.url_map.strict_slashes = False
 WTF_CSRF_SECRET_KEY = "a random string"
 
-draw_1 = [59, 66, 31, 28, 60, 19, 30, 46, 70, 41,
-          20, 33, 16, 76, 49, 54, 36, 23, 90, 1, ]
-draw_2 = [3, 56, 22, 52, 50, 64, 45, 13, 87, 18, ]
-draw_3 = [75, 34, 79, 84, 4, 43, 63, 42, 25, 72, ]  # Heidi på 79, en række - Jeanett på 43, en række
-draw_4 = [74, 80, 24, 55, 32, 12, 5, 53, 2, 61, ]   # Jeanett på 2 to rækker
-draw_5 = [6, 57, 62, 40, 39, 77, 83, 85, 89, 81, ]
-draw_6 = [26, 86, 71, 44, 67, 73, 48, 58, 65, 7, ]
-draw_7 = [69, 88, 51, 27, 21, 47, 38, 82, 37, 10]  # Laura banko på 82 - fuld plade
-not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
-draw = draw_1 + draw_2 + draw_3 + draw_4 + draw_5 + draw_6 + draw_7
-latest_draw = draw_7
+draws = [[17, 24, 37, 75, 27, 33, 20, 88, 57, 62],
+        [52, 81, 77, 87, 41, 80, 89, 76, 1, 67],
+        [11, 39, 44, 60, 3, 66, 40, 78, 73, 31],  # Christian Palle på  nummer 3
+        [13, 65, 50, 84, 35, 71, 7, 34, 69, 61],
+        [56, 14, 58, 55, 9, 79, 10, 48, 21, 6],
+        [2, 8, 12, 46, 29, 18, 74, 51, 83, 53],  # Sonny på nummer 74
+        [25, 47, 45, 90, 63, 32, 49, 36, 68, 42],  # Hedi på nummer 90
+        [30, 43, 22, 82, 64, 16, 5, 70, 72, 85],
+        [38, 26, 15, 19, 4, 86, 54, 28, 23, 59]]
 
+draw = draws[0] + draws[1]  # + draw[2] #+ draw[3] #+ draw[4] #+ draw[5] #+ draw[6] #+ draw[7]
+latest_draw = draw
 
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
@@ -32,7 +31,7 @@ sponsorer = [
     ['slagterknabstrup.png', 'Slageren i Knabstrup'],
     ['sparekassen.png', 'Sparekassen Sjælland-Fyn'],
     ['superbrugsenasnaes.png', 'Superbrugsen Asnæs'],
-    ]
+]
 
 
 @app.template_filter()
@@ -98,6 +97,8 @@ def register():
             errors.append('Vælg en uge at spille for!')
         if fields.get('gameweek', None) == 'uge6':
             errors.append('Der kan ikke længere registreres plader for uge 6.')
+        if fields.get('gameweek', None) == 'uge7':
+            errors.append('Der kan ikke længere registreres plader for uge 7.')
         name = fields.get('inputName', None)
         surname = fields.get('inputSurname', None)
         gameweek = fields.get('gameweek', None)
@@ -114,7 +115,8 @@ def register():
         row3 = [(i, numbers.pop(choice(range(len(numbers))))) for i in range(5)]
     rows = {1: row1, 2: row2, 3: row3}
     shuffle(sponsorer)
-    return render_template('register.html', page=page, title="Deltag!", rows=rows, name=name, gameweek=gameweek, surname=surname, errors=errors, sponsorer=sponsorer)
+    return render_template('register.html', page=page, title="Deltag!", rows=rows, name=name, gameweek=gameweek,
+                           surname=surname, errors=errors, sponsorer=sponsorer)
 
 
 @app.route('/tilmeldte')
@@ -122,7 +124,8 @@ def show_players():
     page = 'players'
     players = database.get_players()
     shuffle(sponsorer)
-    return render_template('players.html', page=page, title='Tilmeldte', players=players, drawn=draw, sponsorer=sponsorer)
+    return render_template('players.html', page=page, title='Tilmeldte', players=players, drawn=draw,
+                           sponsorer=sponsorer)
 
 
 @app.route('/vinder')

@@ -52,10 +52,10 @@ def banko_in_row(row, drawn):
     return counter == 5
 
 
-if __name__ == '__main__':
+def find_winners():
     uge8 = [
         [37, 51, 65, 87, 86, 15, 82, 13, 56, 57], [26, 49, 30, 71, 12, 74, 52, 33, 77, 44],
-        [63, 34, 75, 9, 31, 38, 39, 17, 22, 80],   # Rie på nummer 63
+        [63, 34, 75, 9, 31, 38, 39, 17, 22, 80],  # Rie på nummer 63
         [32, 2, 84, 72, 88, 67, 41, 78, 81, 73],
         [64, 90, 1, 7, 16, 85, 6, 27, 43, 69],
         [46, 10, 66, 76, 79, 60, 3, 5, 18, 50],  # Bente på 3
@@ -73,9 +73,20 @@ if __name__ == '__main__':
             [30, 43, 22, 82, 64, 16, 5, 70, 72, 85],
             [38, 26, 15, 19, 4, 86, 54, 28, 23, 59]]
 
+    ###  uge6 =\
+    draw_1 = [59, 66, 31, 28, 60, 19, 30, 46, 70, 41,
+              20, 33, 16, 76, 49, 54, 36, 23, 90, 1, ]
+    draw_2 = [3, 56, 22, 52, 50, 64, 45, 13, 87, 18, ]
+    draw_3 = [75, 34, 79, 84, 4, 43, 63, 42, 25, 72, ]  # Heidi på 79, en række - Jeanett på 43, en række
+    draw_4 = [74, 80, 24, 55, 32, 12, 5, 53, 2, 61, ]   # Jeanett på 2 to rækker
+    draw_5 = [6, 57, 62, 40, 39, 77, 83, 85, 89, 81, ]
+    draw_6 = [26, 86, 71, 44, 67, 73, 48, 58, 65, 7, ]
+    draw_7 = [69, 88, 51, 27, 21, 47, 38, 82, 37, 10]  # Laura banko på 82 - fuld plade
+    not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
+
     draws = uge7
 
-    draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] #+ draws[6] #+ draws[7] #+ draws[8]
+    draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5]  # + draws[6] #+ draws[7] #+ draws[8]
     players = get_players(gameweek='uge7')
     print(f'Trukket: {draw}')
     print()
@@ -90,3 +101,11 @@ if __name__ == '__main__':
                 wins += 1
                 if wins == 2:
                     print(f'{player[0]} {player[1]}: {rows}')
+
+
+if __name__ == '__main__':
+    uge6 = [x[0] + ' ' + x[1] for x in get_players(gameweek='uge6')]
+    uge7 = [x[0] + ' ' + x[1] for x in get_players(gameweek='uge7')]
+    for player in uge6:
+        if player not in uge7:
+            print(player)
