@@ -8,17 +8,17 @@ app.url_map.strict_slashes = False
 WTF_CSRF_SECRET_KEY = "a random string"
 
 draws = [[17, 24, 37, 75, 27, 33, 20, 88, 57, 62],
-        [52, 81, 77, 87, 41, 80, 89, 76, 1, 67],
-        [11, 39, 44, 60, 3, 66, 40, 78, 73, 31],  # Christian Palle på  nummer 3
-        [13, 65, 50, 84, 35, 71, 7, 34, 69, 61],
-        [56, 14, 58, 55, 9, 79, 10, 48, 21, 6],
-        [2, 8, 12, 46, 29, 18, 74, 51, 83, 53],  # Sonny på nummer 74
-        [25, 47, 45, 90, 63, 32, 49, 36, 68, 42],  # Hedi på nummer 90
-        [30, 43, 22, 82, 64, 16, 5, 70, 72, 85],
-        [38, 26, 15, 19, 4, 86, 54, 28, 23, 59]]
+         [52, 81, 77, 87, 41, 80, 89, 76, 1, 67],
+         [11, 39, 44, 60, 3, 66, 40, 78, 73, 31],  # June på 3, (Christian Palle på  nummer 40,  Pernille på 31,)
+         [13, 65, 50, 84, 35, 71, 7, 34, 69, 61],
+         [56, 14, 58, 55, 9, 79, 10, 48, 21, 6],
+         [2, 8, 12, 46, 29, 18, 74, 51, 83, 53],  # Sonny på nummer 74
+         [25, 47, 45, 90, 63, 32, 49, 36, 68, 42],  # Hedi på nummer 90
+         [30, 43, 22, 82, 64, 16, 5, 70, 72, 85],
+         [38, 26, 15, 19, 4, 86, 54, 28, 23, 59]]
 
-draw = draws[0] + draws[1]  + draws[2] #+ draws[3] #+ draws[4] #+ draw[s5] #+ draws[6] #+ draws[7]
-latest_draw = draws[2]
+draw = draws[0] + draws[1] + draws[2]  + draws[3] #+ draws[4] #+ draw[s5] #+ draws[6] #+ draws[7]
+latest_draw = draws[3]
 
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
