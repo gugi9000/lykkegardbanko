@@ -17,8 +17,8 @@ draws = [[17, 24, 37, 75, 27, 33, 20, 88, 57, 62],
          [30, 43, 22, 82, 64, 16, 5, 70, 72, 85],  # Søndag
          [38, 26, 15, 19, 4, 86, 54, 28, 23, 59]]
 
-draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] #+ draw[s5] #+ draws[6] #+ draws[7]
-latest_draw = draws[4]
+draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] #+ draws[6] #+ draws[7]
+latest_draw = draws[5]
 
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
