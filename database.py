@@ -84,10 +84,10 @@ def find_winners():
         ]
     not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
 
-    draws = uge8
+    draws = uge7
 
-    draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] + draws[6] + draws[7] #+ draws[8]
-    players = get_players(gameweek='uge8')
+    draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] + draws[6]# + draws[7] #+ draws[8]
+    players = get_players(gameweek='uge7')
     print(f'Trukket: {draw}')
     print()
     for player in players:
@@ -99,7 +99,7 @@ def find_winners():
         for row in rows:
             if banko_in_row(row, draw):
                 wins += 1
-                if wins == 3:
+                if wins == 2:
                     print(f'{player[0]} {player[1]}: {rows}')
 
 
