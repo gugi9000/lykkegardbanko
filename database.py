@@ -39,7 +39,9 @@ def add_registration(fields):
     sql = "INSERT INTO players VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,datetime('now'))"
     cur = conn.cursor()
     """inputName, inputSurname, inputRow1_0, inputRow1_1, inputRow1_2, inputRow1_3, inputRow1_4, inputRow2_0, inputRow2_1, inputRow2_2, inputRow2_3, inputRow2_4, inputRow3_0, inputRow3_1, inputRow3_2, inputRow3_3, inputRow3_4, gameweek, created"""
-    cur.execute(sql, (fields))
+    fields[0] = fields[0].strip()
+    fields[1] = fields[1].strip()
+    cur.execute(sql, fields)
     conn.commit()
     return cur.lastrowid
 
