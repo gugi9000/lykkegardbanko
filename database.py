@@ -56,14 +56,16 @@ def banko_in_row(row, drawn):
 
 def find_winners():
     uge8 = [
-        [37, 51, 65, 87, 86, 15, 82, 13, 56, 57], [26, 49, 30, 71, 12, 74, 52, 33, 77, 44],
+        [37, 51, 65, 87, 86, 15, 82, 13, 56, 57], [26, 49, 30, 71, 12, 74, 52, 33, 77, 44],  # Mandag
         [63, 34, 75, 9, 31, 38, 39, 17, 22, 80],  # Rie på nummer 63
-        [32, 2, 84, 72, 88, 67, 41, 78, 81, 73],
-        [64, 90, 1, 7, 16, 85, 6, 27, 43, 69],
+        [32, 2, 84, 72, 88, 67, 41, 78, 81, 73],  # Onsdag
+        [64, 90, 1, 7, 16, 85, 6, 27, 43, 69],  # Torsdag
         [46, 10, 66, 76, 79, 60, 3, 5, 18, 50],  # Bente på 5, Kirsten Devantier på 50
-        [19, 54, 25, 8, 83, 89, 29, 4, 68, 62],
-        [48, 24, 11, 40, 28, 14, 53, 70, 36, 47],  # Minou på nummer 24, Lena, 14, Thomas Lumholdt 70, Mette Dalum 36,
-        [45, 58, 21, 61, 42, 55, 35, 20, 23, 59]]
+        [19, 54, 25, 8, 83, 89, 29, 4, 68, 62],  # Lørdag
+        [48, 24, 11, 40, 28, 14, 53, 70, 36, 47],  # June på 48, Minou på nummer 24,  Lena, 14, Thomas Lumholdt 70, Mette Dalum 36,
+        [45, 58, 21, 61, 42, 55, 35, 20, 23, 59]]  # Nøøh..
+
+
 
     uge7 = [[17, 24, 37, 75, 27, 33, 20, 88, 57, 62],
             [52, 81, 77, 87, 41, 80, 89, 76, 1, 67],
@@ -86,10 +88,10 @@ def find_winners():
         ]
     not_drawn = [68, 14, 11, 8, 29, 35, 78, 15, 17, 9]  # Mads og Jeanett hele pladen på 68
 
-    draws = uge7
+    draws = uge8
 
-    draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] + draws[6]# + draws[7] #+ draws[8]
-    players = get_players(gameweek='uge7')
+    draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] + draws[6] + draws[7][0:1] #+ draws[8]
+    players = get_players(gameweek='uge8')
     print(f'Trukket: {draw}')
     print()
     for player in players:
@@ -101,7 +103,7 @@ def find_winners():
         for row in rows:
             if banko_in_row(row, draw):
                 wins += 1
-                if wins == 2:
+                if wins == 3:
                     print(f'{player[0]} {player[1]}: {rows}')
 
 

@@ -99,6 +99,8 @@ def register():
             errors.append('Der kan ikke længere registreres plader for uge 6.')
         if fields.get('gameweek', None) == 'uge7':
             errors.append('Der kan ikke længere registreres plader for uge 7.')
+        if fields.get('gameweek', None) == 'uge8':
+            errors.append('Der kan ikke længere registreres plader for uge 8.')
         name = fields.get('inputName', None).strip()
         surname = fields.get('inputSurname', None).strip()
         gameweek = fields.get('gameweek', None)
