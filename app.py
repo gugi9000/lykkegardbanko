@@ -7,18 +7,18 @@ app.secret_key = b"dette er en hemmelig streng"
 app.url_map.strict_slashes = False
 WTF_CSRF_SECRET_KEY = "a random string"
 
-draws = [[17, 24, 37, 75, 27, 33, 20, 88, 57, 62],
-         [52, 81, 77, 87, 41, 80, 89, 76, 1, 67], # Mandag
-         [11, 39, 44, 60, 3, 66, 40, 78, 73, 31],  # June på 3, (Christian Palle på  nummer 40,  Pernille på 31,)
-         [13, 65, 50, 84, 35, 71, 7, 34, 69, 61], # Onsdag
-         [56, 14, 58, 55, 9, 79, 10, 48, 21, 6],  # Torsdag
-         [2, 8, 12, 46, 29, 18, 74, 51, 83, 53],  # Sonny på nummer 74
-         [25, 47, 45, 90, 63, 32, 49, 36, 68, 42],  # Hedi på nummer 90
-         [30, 43, 22, 82, 64, 16, 5, 70, 72, 85],  # Søndag
-         [38, 26, 15, 19, 4, 86, 54, 28, 23, 59]]
+draws = [
+        [37, 51, 65, 87, 86, 15, 82, 13, 56, 57], [26, 49, 30, 71, 12, 74, 52, 33, 77, 44],
+        [63, 34, 75, 9, 31, 38, 39, 17, 22, 80],  # Rie på nummer 63
+        [32, 2, 84, 72, 88, 67, 41, 78, 81, 73],
+        [64, 90, 1, 7, 16, 85, 6, 27, 43, 69],
+        [46, 10, 66, 76, 79, 60, 3, 5, 18, 50],  # Bente på 5, Kirsten Devantier på 50
+        [19, 54, 25, 8, 83, 89, 29, 4, 68, 62],
+        [48, 24, 11, 40, 28, 14, 53, 70, 36, 47],  # Minou på nummer 24, Lena, 14, Thomas Lumholdt 70, Mette Dalum 36,
+        [45, 58, 21, 61, 42, 55, 35, 20, 23, 59]]
 
-draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] + draws[6] #+ draws[7]
-latest_draw = draws[6]
+draw = draws[0] + draws[1] #+ draws[2] #+ draws[3] #+ draws[4] #+ draws[5] #+ draws[6] #+ draws[7]
+latest_draw = draw
 
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
