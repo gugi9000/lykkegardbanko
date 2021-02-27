@@ -17,8 +17,8 @@ draws = [
         [48, 24, 11, 40, 28, 14, 53, 70, 36, 47],  # Minou på nummer 24, Lena, 14, Thomas Lumholdt 70, Mette Dalum 36,
         [45, 58, 21, 61, 42, 55, 35, 20, 23, 59]]
 
-draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] #+ draws[6] #+ draws[7]
-latest_draw = draws[5]
+draw = draws[0] + draws[1] + draws[2] + draws[3] + draws[4] + draws[5] + draws[6] #+ draws[7]
+latest_draw = draws[6]
 
 sponsorer = [
     ['FairIT.png', 'Fair IT A/S'],
